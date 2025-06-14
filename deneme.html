@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tatlı Tarifleri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #fff4f4;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+    .search-box input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 200px;
+    }
+    nav {
+      background-color: #f8f8f8;
+      padding: 10px;
+      text-align: center;
+    }
+    .nav-link {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+    .nav-link:hover {
+      color: #ff6b6b;
+    }
+    .menu {
+      display: inline-block;
+      position: relative;
+    }
+    .menu-btn {
+      background-color: #f8f8f8;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .menu-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .menu-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .menu-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .menu:hover .menu-content {
+      display: block;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 24px;
+      margin: 30px 0 10px;
+      color: #333;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+    .recipe-card {
+      width: 300px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .recipe-card:hover {
+      transform: scale(1.02);
+    }
+    .recipe-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .recipe-content {
+      padding: 15px;
+    }
+    .recipe-content h3 {
+      margin: 0 0 10px;
+    }
+    .recipe-content button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #ff6b6b;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .recipe-content button:hover {
+      background-color: #ff4b4b;
+    }
+    .buttons {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background-color: #ff4b4b;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f8f8f8;
+      color: #777;
+      font-size: 14px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Tatlı Tarifleri</div>
+    <div class="search-box">
+      <input type="text" placeholder="Tarif ara...">
+    </div>
+  </header>
+<nav>
+  <a href="deneme.html" class="nav-link">Ana Sayfa</a>
+  <a href="hakkımızda.html" class="nav-link">Hakkımızda</a>
+  <a href="populer.html" class="nav-link">Popüler Tarifler</a>
+  <div class="menu">
+    <button class="menu-btn">Menü ▼</button>
+    <div class="menu-content">
+      <a href="#kekler">Kek ve Kurabiyeler</a>
+      <a href="#serbetli">Şerbetli Tatlılar</a>
+      <a href="#sutlu">Sütlü Tatlılar</a>
+    </div>
+  </div>
+  <a href="iletişim.html" class="nav-link">İletişim</a>
+</nav>
+
+ 
+  
+  
+  <!-- Öne Çıkan Tatlılar -->
+  <h2 id="onecikan" class="section-title">Öne Çıkan Tatlılar</h2>
+
+  <div class="image-container">
+
+    <div class="recipe-card">
+  <img src="indir (2).jpg" alt="Kazandibi">
+  <div class="recipe-content">
+    <h3>Kazandibi</h3>
+    <button onclick="openModal('kazandibi')">Tarifi Göster</button>
+  </div>
+</div>
+
+<div class="recipe-card">
+  <img src="Tutmama Şansı Yok_ Tam Ölçülü Dondurmalı irmik Helvası Tarifi - Gurme Tarif.jpg" alt="İrmik Helvası">
+  <div class="recipe-content">
+    <h3>İrmik Helvası</h3>
+    <button onclick="openModal('irmikhelvasi')">Tarifi Göster</button>
+  </div>
+</div>
+
+    
+
+    <div class="recipe-card">
+      <img src="Traditional Walnut Baklava.jpg" alt="Baklava">
+      <div class="recipe-content">
+        <h3>Ev Yapımı Baklava</h3>
+        <button onclick="openModal('baklava')">Tarifi Göster</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Kek ve Kurabiyeler Bölümü -->
+  <h2 id="kekler" class="section-title">Kek ve Kurabiyeler</h2>
+
+  <div class="image-container">
+
+    <div class="recipe-card">
+      <img src="Havuçlu Tarifler_ Farklı Ve Pratik 16 Nefis Havuçlu Tarif.jpg" alt="Havuçlu Kek">
+      <div class="recipe-content">
+        <h3>Klasik Havuçlu Kek</h3>
+        <button onclick="openModal('havuc')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="Damla Çikolatalı Kurabiye ( Ağızda Dağılan) - Nefis Yemek Tarifleri.jpg" alt="Çikolatalı Kurabiye">
+      <div class="recipe-content">
+        <h3>Çikolatalı Kurabiye</h3>
+        <button onclick="openModal('kurabiye')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="Anne Eli Değmişcesine_ Fındıklı Kek Tarifi - Tarif Sokağı.jpg" alt="Fındıklı Kek">
+      <div class="recipe-content">
+        <h3>Fındıklı Kek</h3>
+        <button onclick="openModal('findik')">Tarifi Göster</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Şerbetli Tatlılar Bölümü -->
+  <h2 id="serbetli" class="section-title">Şerbetli Tatlılar</h2>
+
+  <div class="image-container">
+
+    <div class="recipe-card">
+      <img src="indir.jpg" alt="Tulumba Tatlısı">
+      <div class="recipe-content">
+        <h3>Tulumba Tatlısı</h3>
+        <button onclick="openModal('tulumba')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="Şambali Tatlısı Nerede Yenir_.jpg" alt="Şambali Tatlısı">
+      <div class="recipe-content">
+        <h3>Şambali Tatlısı</h3>
+        <button onclick="openModal('sambali')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="easy recipes by aziz _ 🌼 Hareeseh (Basbousa) – Arabic Semolina Cake 🍯 _ Facebook.jpg" alt="Revani Tatlısı">
+      <div class="recipe-content">
+        <h3>Revani</h3>
+        <button onclick="openModal('revani')">Tarifi Göster</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sütlü Tatlılar Bölümü -->
+  <h2 id="sutlu" class="section-title">Sütlü Tatlılar</h2>
+
+  <div class="image-container">
+
+    <div class="recipe-card">
+      <img src="Sadece 8 Dakikada Sufle Tarifi - Nefis Yemek Tarifleri - Kopya.jpg" alt="Sufle">
+      <div class="recipe-content">
+        <h3>Sufle</h3>
+        <button onclick="openModal('sufle')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="Kremalı Muzlu Magnolia - Nefis Yemek Tarifleri.jpg" alt="Magnolia">
+      <div class="recipe-content">
+        <h3>Magnolia</h3>
+        <button onclick="openModal('magnolia')">Tarifi Göster</button>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+  <img src="Yalancı Tavuk Göğsü - PelinChef - Kopya.jpg" alt="Tavuk Göğsü">
+  <div class="recipe-content">
+    <h3>Tavuk Göğsü</h3>
+    <button onclick="openModal('tavukgogsu')">Tarifi Göster</button>
+  </div>
+</div>
+
+    
+
+  </div>
+
+  <div class="buttons">
+    <button onclick="window.scrollTo(0, 0)">⬅ Geri</button>
+    <button onclick="alert('Daha fazla tatlı çok yakında!')">Daha Fazla ➡</button>
+  </div>
+
+  <footer>
+    © 2025 Tatlı Tarifleri | Tüm hakları saklıdır.
+  </footer>
+
+  <!-- MODALLAR -->
+  <div id="sufle" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('sufle')">&times;</span>
+      <h2>Sufle Tarifi</h2>
+      <p><strong>Malzemeler:</strong> 2 yumurta, 80 gr çikolata, 2 YK tereyağı, 2 YK un, 2 YK şeker</p>
+      <p><strong>Hazırlık:</strong> Çikolatayı erit, diğer malzemelerle karıştır, fırında 8 dk pişir.</p>
+    </div>
+  </div>
+
+  <div id="magnolia" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('magnolia')">&times;</span>
+      <h2>Magnolia Tarifi</h2>
+      <p><strong>Malzemeler:</strong> 1 lt süt, 1 YK nişasta, 1 YK un, 1 çay bardağı şeker, muz, bebe bisküvisi</p>
+      <p><strong>Hazırlık:</strong> Süt, un, şeker ve nişasta ile muhallebi yapılır. Bisküvi ve muz katları ile kuplara yerleştirilir.</p>
+    </div>
+  </div>
+
+  <div id="baklava" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('baklava')">&times;</span>
+      <h2>Ev Yapımı Baklava Tarifi</h2>
+      <p><strong>Malzemeler:</strong> Yufka, ceviz, şerbet (su, şeker, limon)</p>
+      <p><strong>Hazırlık:</strong> Kat kat yufka serilir, ceviz serpilir, kesilir, pişirilir, şerbet dökülür.</p>
+    </div>
+  </div>
+
+  <div id="havuc" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('havuc')">&times;</span>
+      <h2>Klasik Havuçlu Kek Tarifi</h2>
+      <p><strong>Malzemeler:</strong> 3 yumurta, 2 su bardağı un, 1 su bardağı toz şeker, 1 su bardağı rendelenmiş havuç, 1/2 su bardağı sıvı yağ, 1 paket kabartma tozu, 1 paket vanilin</p>
+      <p><strong>Hazırlık:</strong> Yumurtalar ve şeker çırpılır. Sıvı yağ ve havuç eklenir. Un, kabartma tozu, vanilin eklenip karıştırılır. 180 derece fırında 35-40 dakika pişirilir.</p>
+    </div>
+  </div>
+
+  <div id="kurabiye" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('kurabiye')">&times;</span>
+      <h2>Çikolatalı Kurabiye Tarifi</h2>
+      <p><strong>Malzemeler:</strong> 2 su bardağı un, 150 gr tereyağı, 1 su bardağı toz şeker, 1 yumurta, 1 paket kabartma tozu, damla çikolata</p>
+      <p><strong>Hazırlık:</strong> Tereyağı ve şeker krema haline getirilir. Yumurta eklenir. Un ve kabartma tozu ilave edilir. Hamur hazırlanır. Damla çikolata eklenir. Fırında 180 derecede 15 dakika pişirilir.</p>
+    </div>
+  </div>
+
+  <div id="findik" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('findik')">&times;</span>
+      <h2>Fındıklı Kek Tarifi</h2>
+      <p><strong>Malzemeler:</strong> 3 yumurta, 1,5 su bardağı un, 1 su bardağı şeker, 1/2 su bardağı sıvı yağ, 1 paket kabartma tozu, 1 su bardağı dövülmüş fındık</p>
+      <p><strong>Hazırlık:</strong> Yumurtalar ve şeker çırpılır. Sıvı yağ eklenir. Un, kabartma tozu ve fındık eklenir. Karıştırılır. 180 derecede 40 dakika pişirilir.</p>
+    </div>
+  </div>
+
+  <button onclick="openModal('modal1')">Tarifi Göster</button>
+
+<div id="modal1" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);">
+  <div style="background:#fff; margin: 100px auto; padding:20px; width:300px; position:relative;">
+    <span onclick="closeModal('modal1')" style="position:absolute; top:10px; right:10px; cursor:pointer;">&times;</span>
+    <h2>Tarif Başlığı</h2>
+    <p>Tarif detayları buraya...</p>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+
+<div id="kazandibi" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('kazandibi')">&times;</span>
+    <h2>Kazandibi Tarifi</h2>
+    <p><strong>Malzemeler:</strong> 1 lt süt, 1 çay bardağı pirinç unu, 1 çay bardağı şeker, 2 YK nişasta, tereyağı</p>
+    <p><strong>Hazırlık:</strong> Malzemeleri karıştır, pişir, tepsiyi yağla ve tabanı yakarak pişir.</p>
+  </div>
+</div>
+
+<div id="irmikhelvasi" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('irmikhelvasi')">&times;</span>
+    <h2>İrmik Helvası Tarifi</h2>
+    <p><strong>Malzemeler:</strong> 1 su bardağı irmik, 1/2 su bardağı tereyağı, 1 su bardağı şeker, 2 su bardağı süt</p>
+    <p><strong>Hazırlık:</strong> İrmiği yağda kavur, şerbeti ekle, kapağı kapalı dinlendir.</p>
+  </div>
+</div>
+
+<div id="tavukgogsu" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('tavukgogsu')">&times;</span>
+    <h2>Tavuk Göğsü Tarifi</h2>
+    <p><strong>Malzemeler:</strong> 1 lt süt, 1 çay bardağı un, 1 çay bardağı şeker, 1 YK nişasta, 50 gr tereyağı</p>
+    <p><strong>Hazırlık:</strong> Malzemeleri karıştır, pişir, karıştırarak koyulaştır. Soğutup dilimle.</p>
+  </div>
+</div>
+
+<div id="tulumba" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('tulumba')">&times;</span>
+    <h2>Tulumba Tatlısı Tarifi</h2>
+    <p><strong>Malzemeler:</strong> Un, su, tereyağı, yumurta, şeker, su, limon.</p>
+    <p><strong>Hazırlık:</strong> Hamuru hazırlayıp kızgın yağda kızartın, sıcak şerbete batırın.</p>
+  </div>
+</div>
+
+<div id="sambali" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('sambali')">&times;</span>
+    <h2>Şambali Tatlısı Tarifi</h2>
+    <p><strong>Malzemeler:</strong> İrmik, yoğurt, şeker, kabartma tozu, şerbet.</p>
+    <p><strong>Hazırlık:</strong> Malzemeleri karıştırıp kalıba dökün, pişirin, şerbeti dökün.</p>
+  </div>
+</div>
+
+<div id="revani" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('revani')">&times;</span>
+    <h2>Revani Tarifi</h2>
+    <p><strong>Malzemeler:</strong> İrmik, un, yumurta, yoğurt, şeker, kabartma tozu.</p>
+    <p><strong>Hazırlık:</strong> Malzemeleri karıştırın, pişirin, soğuk şerbeti üzerine dökün.</p>
+  </div>
+</div>
+
+
+
+
